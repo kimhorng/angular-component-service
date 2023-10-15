@@ -1,0 +1,53 @@
+<h1 class="header">User Card Component</h1>
+
+<div class="grid">
+  <div *ngFor="let user of list | sort : 'asc' : 'name'" class="card">
+    <div class="card-background">
+      <img
+        src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+        alt="Mountain"
+      />
+    </div>
+    <div class="card-avatar">
+      <img [src]="user.avatar_url" [alt]="user.name" />
+    </div>
+    <div class="card-user-name">
+      <h3>
+        {{ user.name }}
+      </h3>
+      <p>
+        {{ user.login }}
+      </p>
+    </div>
+    <div class="mt-auto card-footer">
+      <ul class="card-footer-container">
+        <li>
+          <img
+            src="../../../assets/followers.svg"
+            width="16px"
+            alt="followers"
+          />
+          <div>
+            {{
+              user.followers > 1000
+                ? (user.followers / 1000).toFixed(1) + "k"
+                : user.followers
+            }}
+          </div>
+        </li>
+        <li>
+          <img
+            src="../../../assets/following.svg"
+            width="16px"
+            alt="following"
+          />
+          <div>{{ user.following }}</div>
+        </li>
+        <li>
+          <img src="../../../assets/repos.svg" width="16px" alt="repositorys" />
+          <div>{{ user.public_repos }}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
